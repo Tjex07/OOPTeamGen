@@ -1,10 +1,8 @@
 const Employee = require('./Employee');
 
-class intern extends Employee {
-  constructor(name, id, email, school) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
+class Intern extends Employee {
+  constructor(name, ID, email, school) {
+    super(name, ID, email);
     this.school = school;
   }
 
@@ -12,37 +10,10 @@ class intern extends Employee {
     return this.school;
   }
   getRole() {
-    return "intern"
+    return "Intern"
   }
 };
-  module.exports = intern;
-// const promptUser = () => {
-//   return inquirer.prompt([
-//     {
-//       type: 'input',
-//       name: 'name',
-//       message: 'What is the name of your Intern?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'School',
-//       message: 'What school did they attend?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'email',
-//       message: 'What email address will connect you with the intern?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'gitHub',
-//       message: 'What GitHub username are they using?',
-//     },
-    
-//   ]);
-
-  
-//   };
+  module.exports = Intern;
 
   
 

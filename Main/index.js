@@ -86,7 +86,7 @@ const htmlGen = require("./src/htmlGen.js");
     {
       type: 'input',
       name: 'gitHub',
-      message: 'What GitHub username are they using?',
+      message: 'What gitHub username are they using?',
     },
     
   ])
@@ -96,7 +96,7 @@ const htmlGen = require("./src/htmlGen.js");
       data.name,
       data.ID,
       data.email,
-      data.officeNumber
+      data.gitHub
     );
     roster.push(newEngineer);
     addAnother();
@@ -111,21 +111,20 @@ const internQuestions = () => {
       message: 'What is the name of your Intern?',
     },
     {
+    type: 'input',
+      name: 'ID',
+      message: 'What is their employee ID?',
+    },
+    {
       type: 'input',
-      name: 'School',
+      name: 'school',
       message: 'What school did they attend?',
     },
     {
       type: 'input',
       name: 'email',
-      message: 'What email address will connect you with the intern?',
+      message: 'What email address will connect you with the Intern?',
     },
-    {
-      type: 'input',
-      name: 'gitHub',
-      message: 'What GitHub username are they using?',
-    },
-    
   ])
 
  .then((data) => {
@@ -133,7 +132,7 @@ const internQuestions = () => {
       data.name,
       data.ID,
       data.email,
-      data.officeNumber
+      data.school
     );
     roster.push(newIntern);
     addAnother();

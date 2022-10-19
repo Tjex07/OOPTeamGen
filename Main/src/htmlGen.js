@@ -8,7 +8,7 @@ const createRoster = (data) => {
               <ul class="list-group">
               <li class="list-group-item name">${data.name}</li>
                 <li class="list-group-item role">Role: Manager</li>
-                <li class="list-group-item">Employee ID: ${data.id}</li>
+                <li class="list-group-item">Employee ID: ${data.ID}</li>
                 <li class="list-group-item">Email: <span><a href="mailto:${data.email}">${data.email}</a></span></li>
                 <li class="list-group-item">Office Phone Number: ${data.officeNo}</li>
               </ul>
@@ -23,7 +23,7 @@ const createRoster = (data) => {
                 <li class="list-group-item">Role: Engineer</li>
                 <li class="list-group-item">Employee ID: ${data.ID}</li>
                 <li class="list-group-item">Email: <span><a href="mailto:${data.email}">${data.email}</a></span></li>
-                <li class="list-group-item">GitHub Username: <a target="_blank" href="https://github.com/${data.github}">${data.github}</a></li>
+                <li class="list-group-item">GitHub Username: <a target="_blank" href="https://github.com/${data.gitHub}">${data.gitHub}</a></li>
               </ul>
             </div>`;
             rosterArray.push(engineerCard);
