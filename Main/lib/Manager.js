@@ -1,22 +1,24 @@
-const Employee = require('./Employee');
-
-// // Node v10+ includes a promises module as an alternative to using callbacks with file system methods.
-// const { writeFile } = require('fs').promises;
-
-// // Use writeFileSync method to use promises instead of a callback function
+const Employee = require("./employee");
 
 class Manager extends Employee {
-  constructor(name, id, email, office) {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-    this.office = office;
-  }
+    constructor(name, ID, email, officeNumber) {
+      super(name, ID, email);
+      this.officeNo = officeNumber;
+    }
+  
+    officeNumber() {
+        return this.officeNumber;
+    }
 
-  getRole() {
-    return "Manager"
-  }
-};
+    getRole() {
+        return "Manager";
+    }
+}
+
+module.exports = Manager;
+
+
+
 // const promptUser = () => {
 //   return inquirer.prompt([
 //     {

@@ -1,59 +1,148 @@
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern'); 
+const fs = require('fs'); 
+const inquirer = require('inquirer');
+const roster = [];
+const htmlGen = require("./src/htmlGen.js");
 
 
+   inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is the name of your manager?',
+    },
+    {
+      type: 'input',
+      name: 'ID',
+      message: 'What is their employee ID?',
+    },
+    {
+      type: 'input',
+      name: 'officeNumber',
+      message: 'What is their office number',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What email address will connect you with the manager?',
+    },
+    
+  ])
 
-// function Employee(name, ID, email, gitHub){
-//   this.name = name;
-//   this.ID = ID;
-//   this.email = email;
-//   this.gitHub = gitHub;
-// }
+  .then((data) => {
+    const newManager = new Manager(
+      data.name,
+      data.ID,
+      data.email,
+      data.officeNumber
+    );
+    roster.push(newManager);
+    addAnother();
+  });
 
-// Employee.Manager(name, ID, officeNumber, email, gitHub){
-//   this.name = name;
-//   this.ID = ID;
-//   this.email = email;
-//   this.gitHub = gitHub;
-// }
+  const addAnother = () => {
+    inquirer.prompt([
+      {
+        type: "list",
+        message: "Are the any additional employees to add?",
+        name: "newEmployee",
+        choices: ["Add Engineer", "Add Intern", "Thats everyone."],
+      },
+    ])
 
-// function Employee.Intern(name, school, email, gitHub){
-//   this.name = name;
-//   this.ID = ID;
-//   this.email = email;
-//   this.gitHub = gitHub;
-// }
+   .then((data) => {
+      switch (data.newEmployee) {
+        case "Add Engineer":
+          engineerQuestions();
+          break;
+        case "Add Intern":
+          internQuestions();
+          break;
+        default:
+            createRoster();
+      }
+    });
+  };
 
-const generateHTML = ({ name, ID, email, gitHub }) =>
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<title>Document</title>
-</head>
-<body>
-<div class="jumbotron jumbotron-fluid">
-<div class="container">
-  <h1 class="display-4">Hi! My name is ${name}</h1>
-  <p class="lead">I am from ${location}.</p>
-  <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
-  <ul class="list-group">
-    <li class="list-group-item">My GitHub username is ${github}</li>
-    <li class="list-group-item">LinkedIn: ${linkedin}</li>
-  </ul>
-</div>
-</div>
-</body>
-</html>`;
+  const engineerQuestions = () => {
+      inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is the name of your Engineer?',
+    },
+    {
+      type: 'input',
+      name: 'ID',
+      message: 'What is their employee ID?',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What email address will connect you with the Engineer?',
+    },
+    {
+      type: 'input',
+      name: 'gitHub',
+      message: 'What GitHub username are they using?',
+    },
+    
+  ])
 
-// Bonus using writeFileSync as a promise
-const init = () => {
-promptUser()
-  // Use writeFile method imported from fs.promises to use promises instead of
-  // a callback function
-  .then((answers) => writeFile('index.html', generateHTML(answers)))
-  .then(() => console.log('Successfully wrote to index.html'))
-  .catch((err) => console.error(err));
-};
+  .then((data) => {
+    const newEngineer = new Engineer(
+      data.name,
+      data.ID,
+      data.email,
+      data.officeNumber
+    );
+    roster.push(newEngineer);
+    addAnother();
+  });
+}
 
-init();
+const internQuestions = () => {
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is the name of your Intern?',
+    },
+    {
+      type: 'input',
+      name: 'School',
+      message: 'What school did they attend?',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What email address will connect you with the intern?',
+    },
+    {
+      type: 'input',
+      name: 'gitHub',
+      message: 'What GitHub username are they using?',
+    },
+    
+  ])
+
+ .then((data) => {
+    const newIntern = new Intern(
+      data.name,
+      data.ID,
+      data.email,
+      data.officeNumber
+    );
+    roster.push(newIntern);
+    addAnother();
+  });
+  
+  };
+
+  const createRoster = () => {
+    const html = htmlGen(roster);
+    console.log("Your roster has been created. You can find your roster profile under ./dist/index.html.")
+    fs.writeFileSync("dist/index.html", html);
+  };

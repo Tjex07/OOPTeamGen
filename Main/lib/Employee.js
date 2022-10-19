@@ -1,4 +1,3 @@
-
 class Employee {
   constructor(name, id, email) {
     this.name = name;
@@ -23,6 +22,8 @@ class Employee {
   }
 
 };
+
+module.exports = Employee; 
 // const promptUser = () => {
 //   return inquirer.prompt([
 //     {
@@ -50,6 +51,7 @@ class Employee {
 
   
 //   };
+
 
   
 
