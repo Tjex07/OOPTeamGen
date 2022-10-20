@@ -3,7 +3,7 @@ const Employee = require("./employee");
 class Manager extends Employee {
     constructor(name, ID, email, officeNumber) {
       super(name, ID, email);
-      this.officeNo = officeNumber;
+      this.officeNumber = officeNumber;
     }
   
     officeNumber() {

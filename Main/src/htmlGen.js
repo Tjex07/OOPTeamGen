@@ -10,7 +10,7 @@ const createRoster = (data) => {
                 <li class="list-group-item role">Role: Manager</li>
                 <li class="list-group-item">Employee ID: ${data.ID}</li>
                 <li class="list-group-item">Email: <span><a href="mailto:${data.email}">${data.email}</a></span></li>
-                <li class="list-group-item">Office Phone Number: ${data.officeNo}</li>
+                <li class="list-group-item">Office Phone Number: ${data.officeNumber}</li>
               </ul>
             </div>`;
             rosterArray.push(managerCard);
