@@ -1,0 +1,33 @@
+*{
+    font-family: 'Impact', 'Arial Narrow', Arial, sans-serif;
+}
+
+.custom-jumbotron {
+    background-color:#93365f;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.card {
+    background-color:rgb(196, 255, 252);
+    padding: 2rem;
+    margin-bottom: 30px;
+    width: 25rem;
+    font-size: 1.3rem
+}
+
+.container{
+    display:flex;
+    align-items: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:20px;
+  }
+
+ body{
+    background-color: aquamarine;
+ } 
