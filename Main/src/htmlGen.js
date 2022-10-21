@@ -1,8 +1,8 @@
 // Blank array to push created team entries.
 const rosterArray = [];
-// Function that takes the inputted data and forms into readable HTML to display TODO
+// Function that takes the inputted data and forms into readable HTML to display
 const createRoster = (data) => {
-    // Manger
+    // Manager
     const createManager = data => {
         let managerCard = `<div class="card">
               <ul class="list-group">
